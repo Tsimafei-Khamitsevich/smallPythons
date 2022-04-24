@@ -70,6 +70,24 @@ class Warrior:
         else:
             print(f'{self} is dead!')
 
+class Person:
+"""
+Stores employee data like
+(first_name, last_name, qualification)
+"""
+
+    def __init__(self, first_name, last_name, qual=1):
+        self.first_name = first_name
+        self.last_name = last_name
+        self.qual = qual
+
+    def __repr__(self):
+        return f'{self.first_name} {self.last_name} {self.qual}'
+    
+    def __del__(self):
+        print(f'Goodbye mister {self.first_name} {self.last_name}')
+        
+
 def Battle():
     """
     Conduct battle between two instances
@@ -83,6 +101,21 @@ def Battle():
     
     print(f'\n!!!{warriors[0]} wins!!!')
 
+def Hire_and_fire():
+"""
+Imitates hiring and firing proccess
+"""
+
+    p1 = Person('Tsimafei', 'Khamitsevich', 2)
+    p2 = Person('Max', 'Cherenzov', 3)
+    p3 = Person('John', 'Green')
+
+    for i in (p1, p2, p3):
+        print(i)
+    
+    del p3, i
+    input()
 
 if __name__=='__main__':
-    Battle()
+    Hire_and_fire()
+    # Battle()
