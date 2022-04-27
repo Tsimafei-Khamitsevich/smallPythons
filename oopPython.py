@@ -199,6 +199,57 @@ class Room:
         return math.ceil(square / one_roll)
 
 
+class Snow:
+    """
+    Attributes:
+    flakes(int) - number of flakes
+    """
+    def __init__(self, flakes: int):
+        self.flakes = flakes
+
+    def getFlakes(self):
+        return self.flakes
+
+    def __add__(self, n):
+        self.flakes += n
+        return self.flakes
+
+    def __sub__(self, n):
+        self.flakes -= n
+        return self.flakes
+
+    def __mul__(self, n):
+        self.flakes *= n
+        return self.flakes
+
+    def __truediv__(self, n):
+        self.flakes //= n
+        return self.flakes
+
+    def __call__(self, n):
+        self.flakes = n
+
+    def makeSnow(self, n):
+        """
+        returns string of '*' symbols
+        where number of asteriks in one
+        row equals 'n'. Rows are separated
+        by '\n'
+        """
+        rows = self.flakes // n
+        numLeftFlakes = self.flakes % n
+
+        snowFall = ''
+
+        snowFall = ''.join(
+            ['*' * n + '\n' for _ in range(rows)]
+            )
+
+        snowFall += numLeftFlakes * '*'
+
+        return snowFall
+
+
 def biggerTeamAction(t1, t2, l1, l2, sold, h):
 
     print(f"{t1} team has more soldiers ({l1}) than {t2} team ({l2})")
@@ -357,10 +408,26 @@ def Add_nums():
     print(n3)
 
 
+def PlayingSnow():
+    """
+    Testing functionality of
+    class 'Snow'
+    """
+    snow = Snow(88)
+    print(snow + 9)
+    print(snow - 90)
+    print(snow * 10)
+    print(snow / 4)
+    snow(100)
+    print(snow.getFlakes())
+    print(snow.makeSnow(9))
+
+
 if __name__ == '__main__':
     # list of Functions to try:
+    PlayingSnow()
     # calcWallpapers()
-    # Add_nums
+    # Add_nums()
     # StrategyGame()
     # Hire_and_fire()
     # Battle()
