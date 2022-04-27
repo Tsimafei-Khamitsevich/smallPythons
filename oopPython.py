@@ -1,3 +1,9 @@
+"""
+In module 'oopPython' I explore OOP concepts
+in Python language by creating various classes
+and instantiating them. Exersises taken from course
+'OOP Python' https://ask42.us/show_course/oop_python/.
+"""
 import random
 import re
 import math
@@ -352,7 +358,9 @@ def Add_nums():
 
 
 if __name__ == '__main__':
-    calcWallpapers()
-    StrategyGame()
+    # list of Functions to try:
+    # calcWallpapers()
+    # Add_nums
+    # StrategyGame()
     # Hire_and_fire()
     # Battle()
