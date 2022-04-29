@@ -197,9 +197,20 @@ def TeacherStudent():
     Bob.randomForget()
 
 
+def CylinderArea():
+    """
+    Testing class Cylinder
+    """
+    cylinder = Cylinder(3, 6)
+    print(cylinder)
+    cylinder.dia = 10
+    print(cylinder)
+
+
 if __name__ == '__main__':
     # list of Functions to try:
-    TeacherStudent()
+    CylinderArea()
+    # TeacherStudent()
     # PlayingSnow()
     # calcWallpapers()
     # Add_nums()

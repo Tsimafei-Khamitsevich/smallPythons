@@ -6,6 +6,7 @@ solution to exercises from course
 import re
 import math
 import random
+from math import pi
 
 
 class Warrior:
@@ -253,7 +254,7 @@ class Data:
     """
     Stores list of subjects by name.
     Created for usage with classes:
-    'Teacher', 'Pupil'. 
+    'Teacher', 'Pupil'.
     """
     def __init__(self, *info):
         self.info = list(info)
@@ -269,7 +270,7 @@ class Teacher:
     """
     'Teacher' teacher 'Pupil'.
     Created for usage with classes:
-    'Data', 'Pupil'. 
+    'Data', 'Pupil'.
     """
     def teach(self, info, *pupil):
         for i in pupil:
@@ -279,7 +280,7 @@ class Teacher:
 class Pupil:
     """
     Pupil learns new information either
-    by himself or with teacher. Able to 
+    by himself or with teacher. Able to
     forget learnd.
     Created for usage with classes:
     'Teacher', 'Data'.
@@ -296,3 +297,40 @@ class Pupil:
     def randomForget(self):
         n = random.randint(0, len(self.knowledge) - 1)
         print(f"{self.knowledge.pop(n)} item is succesfully forgotten!")
+
+
+class Cylinder:
+    """
+    Stores diameter and hight of a cylinder.
+    Allows to compute area of it.
+    """
+    @staticmethod
+    def make_area(d, h):
+        circle = pi * d ** 2 / 4
+        side = pi * d * h
+        return round(circle*2 + side, 2)
+
+    def __init__(self, diameter, high):
+        self.dia = diameter
+        self.h = high
+        self.__area = self.make_area(diameter, high)
+
+    def __setattr__(self, attr, value):
+        if attr in ['dia', 'h', '_Cylinder__area']:
+            self.__dict__[attr] = value
+        else:
+            raise AttributeError
+
+        shape_params = set(('dia', 'h'))
+        self_attr = set(self.__dict__.keys())
+        if attr in shape_params and self_attr.issuperset(shape_params):
+            self.__area = self.make_area(self.dia, self.h)
+
+    def __str__(self):
+        s = f"Cylinder area = {self.__area} "\
+            f"with diamiter = {self.dia} "\
+            f"and hight = {self.h}"
+        return s
+
+    def getArea(self):
+        return self.__area
