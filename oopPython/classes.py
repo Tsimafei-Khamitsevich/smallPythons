@@ -5,6 +5,7 @@ solution to exercises from course
 """
 import re
 import math
+import random
 
 
 class Warrior:
@@ -246,3 +247,52 @@ class Snow:
         snowFall += numLeftFlakes * '*'
 
         return snowFall
+
+
+class Data:
+    """
+    Stores list of subjects by name.
+    Created for usage with classes:
+    'Teacher', 'Pupil'. 
+    """
+    def __init__(self, *info):
+        self.info = list(info)
+
+    def __getitem__(self, i):
+        return self.info[i]
+
+    def __str__(self):
+        return str(self.info)
+
+
+class Teacher:
+    """
+    'Teacher' teacher 'Pupil'.
+    Created for usage with classes:
+    'Data', 'Pupil'. 
+    """
+    def teach(self, info, *pupil):
+        for i in pupil:
+            i.take(info)
+
+
+class Pupil:
+    """
+    Pupil learns new information either
+    by himself or with teacher. Able to 
+    forget learnd.
+    Created for usage with classes:
+    'Teacher', 'Data'.
+    """
+    def __init__(self):
+        self.knowledge = []
+
+    def take(self, info):
+        self.knowledge.append(info)
+
+    def selfEduc(self, info):
+        self.knowledge.append(info)
+
+    def randomForget(self):
+        n = random.randint(0, len(self.knowledge) - 1)
+        print(f"{self.knowledge.pop(n)} item is succesfully forgotten!")

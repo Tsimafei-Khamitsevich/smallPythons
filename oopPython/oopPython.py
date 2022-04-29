@@ -181,9 +181,26 @@ def PlayingSnow():
     print(snow.makeSnow(9))
 
 
+def TeacherStudent():
+    """
+    Testing 'Data', 'Teacher', 'Pupil'
+    classes.
+    """
+    data = Data(['Python', 'SQL', 'Esoteric', 'Philosopy'])
+    Rob = Teacher()
+    Bob = Pupil()
+    print(data)
+    Rob.teach(data[0][0], Bob)
+    Rob.teach(data[0][2], Bob)
+    Bob.selfEduc(data[0][1])
+    print(Bob.knowledge)
+    Bob.randomForget()
+
+
 if __name__ == '__main__':
     # list of Functions to try:
-    PlayingSnow()
+    TeacherStudent()
+    # PlayingSnow()
     # calcWallpapers()
     # Add_nums()
     # StrategyGame()
